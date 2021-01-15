@@ -127,7 +127,7 @@ services:
         - if [ "$TUGBOAT_PREVIEW_TYPE" = "pullrequest" ]; then composer yaml-test va/web/build va/tests; fi
 
         # Do run the WEB build if on a branch, tag or commit so the `web-*` prefix works.
-        - if [ "$TUGBOAT_PREVIEW_TYPE" != "pullrequest" ]; then composer yaml-test va/web/build --dry-run; fi
+        - if [ "$TUGBOAT_PREVIEW_TYPE" != "pullrequest" ]; then composer yaml-test -vvv va/web/build --dry-run; fi
 
         # Set file permissions so web based build calls work.  This must run after all web builds are done in tests.
         - chown -R www-data:www-data "${DOCROOT}/vendor/va-gov/web"
